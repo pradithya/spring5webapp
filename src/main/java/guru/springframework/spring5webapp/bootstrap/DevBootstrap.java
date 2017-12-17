@@ -29,14 +29,24 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     }
 
     private void initData(){
-        Author eric = new Author("Eric", "Demaine");
-        Publisher harperCollins = new Publisher("Harper Collins", "USA");
-        Book ddd = new Book("Domain Driven Design", "1234", harperCollins);
-        eric.getBooks().add(ddd);
-        ddd.getAuthors().add(eric);
+        Author jkRowling = new Author("J.K.", "Rowling");
+        Publisher bloomsburry = new Publisher("Bloomsbury", "UK");
+        Book harryPotter = new Book("Harry Potter and the Goblet of Fire", "9789955081760", bloomsburry);
+        jkRowling.getBooks().add(harryPotter);
+        harryPotter.getAuthors().add(jkRowling);
 
-        publisherRepository.save(harperCollins);
-        authorRepository.save(eric);
-        bookRepository.save(ddd);
+
+        Author jrrTolkien = new Author("J.R.R.", "Tolkien");
+        Publisher allenAndUnwin = new Publisher("Allen & Unwin", "Australia");
+        Book lotr = new Book("Lord of the Ring", "9788373191723", allenAndUnwin);
+        jrrTolkien.getBooks().add(lotr);
+        lotr.getAuthors().add(jrrTolkien);
+
+        publisherRepository.save(bloomsburry);
+        publisherRepository.save(allenAndUnwin);
+        authorRepository.save(jkRowling);
+        authorRepository.save(jrrTolkien);
+        bookRepository.save(harryPotter);
+        bookRepository.save(lotr);
     }
 }
